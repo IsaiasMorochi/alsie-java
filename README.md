@@ -40,3 +40,6 @@ afecte a todo el equipo, una vez terminada la reunión, se acuerda un momento pa
 * Cumplir estándares de documentación.
 * Poner impedimentos sobre de la mesa durante las Daily.
 * Revisar este Team Agreement en caso de necesidad, durante la Retrospective.
+
+### DEVELOPMENT
+* Toda modificacion en el API debe ser revisada y aprobada por otro miembro del JAVA TEAM.
