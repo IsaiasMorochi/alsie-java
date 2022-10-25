@@ -1,0 +1,3 @@
+# TEAM AGREEMENTS
+
+### TEAM JAVA
