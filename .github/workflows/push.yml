@@ -10,8 +10,8 @@ jobs:
     - name: build and push to docker
       uses: docker/build-push-action@v2
       with:
-        username: isaiasdocker
-        password: 1234567890i
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         repository: isaiasdocker/alsie-java
         tag_with_ref: true
         tag_with_sha: true
