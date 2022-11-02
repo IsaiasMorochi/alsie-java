@@ -1,9 +1,0 @@
-version: "3.7"
-
-services:
-  backend:
-    container_name: alsie-java-backend
-    build: .
-    ports:
-      - "9966:9966"
-    restart: always

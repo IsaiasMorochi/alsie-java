@@ -35,8 +35,6 @@ local.properties
 # PDT-specific (PHP Development Tools)
 .buildpath
 
-# sbteclipse plugin
-.target
 
 # Tern plugin
 .tern-project
@@ -239,7 +237,6 @@ hs_err_pid*
 replay_pid*
 
 ### Maven ###
-target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
