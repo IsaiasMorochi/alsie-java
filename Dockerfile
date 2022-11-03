@@ -1,8 +1,6 @@
 FROM adoptopenjdk/openjdk11 as build
 
-ARG JAR_FILE=target/alsie-java-0.0.1.jar
-
-RUN ${JAR_FILE} app.jar
+COPY target/alsie-java-0.0.1.jar app.jar
 
 EXPOSE 8080
 
