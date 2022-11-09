@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alsie-java
+  #namespace: dev
+  labels:
+    app: alsie-java
+    #version: 1.0.1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alsie-java
+      #version: 1.0.1
+  template:
+    metadata:
+      labels:
+        app: alsie-java
+        #version: 1.0.1
+    spec:
+      containers:
+        - name: alsie-java
+          image: isaiasdocker/alsie-java:1.0.2
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
