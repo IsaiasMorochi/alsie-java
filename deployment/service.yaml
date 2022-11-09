@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: alsie-java
+  #namespace: dev
+
+spec:
+  type: NodePort
+  selector:
+    app: alsie-java
+  ports:
+    - nodePort: 30074
+      port: 8080
