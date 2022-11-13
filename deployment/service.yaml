@@ -10,4 +10,4 @@ spec:
     app: alsie-java
   ports:
     - nodePort: 30074
-      port: 8080
+      port: 8081
