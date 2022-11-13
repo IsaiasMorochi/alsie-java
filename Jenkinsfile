@@ -67,12 +67,21 @@ pipeline {
 
         stage ('Build & Push Dockerhub') {
             steps {
+              sh 'docker version'
                 sh 'docker build -f Dockerfile -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BRANCH_NAME-$BUILD_NUMBER .'
                 withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' , credentialsId : "$DOCKERHUB_CREDENTIALS",)]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login $REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
                     sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BRANCH_NAME-$BUILD_NUMBER'
                 }
             }
+        }
+
+        stage('Deploying App to Kubernetes') {
+          steps {
+            script {
+              kubernetesDeploy(configs: "deployment/**", kubeconfigId: "kubernetes-config")
+            }
+          }
         }
 
    }
@@ -86,4 +95,5 @@ pipeline {
           sh 'docker logout'
        }
    }
+
 }
