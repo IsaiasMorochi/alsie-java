@@ -16,6 +16,7 @@ pipeline {
         GITHUB_ACCOUNT = ''
         APP_NAME = 'alsie-java'
         BRANCH_NAME = 'main'
+        TAG_NAME = '1.0.3'
         URL_REPOSITORY = 'https://github.com/IsaiasMorochi/alsie-java.git'
     }
 
@@ -68,10 +69,10 @@ pipeline {
         stage ('Build & Push Dockerhub') {
             steps {
               sh 'docker version'
-                sh 'docker build -f Dockerfile -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BRANCH_NAME-$BUILD_NUMBER .'
+                sh 'docker build -f Dockerfile -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME .'
                 withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' , credentialsId : "$DOCKERHUB_CREDENTIALS",)]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login $REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
-                    sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BRANCH_NAME-$BUILD_NUMBER'
+                    sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME'
                 }
             }
         }
