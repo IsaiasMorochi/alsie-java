@@ -77,13 +77,14 @@ pipeline {
             }
         }
 
-//         stage('Deploying App to Kubernetes') {
-//           steps {
+        stage('Deploying App to Kubernetes') {
+          steps {
+           echo 'cuando es exitoso el deploy a kubernetes'
 //             script {
 //               kubernetesDeploy(configs: "deployment/**", kubeconfigId: "kubernetes-config")
 //             }
-//           }
-//         }
+          }
+        }
 
    }
 
